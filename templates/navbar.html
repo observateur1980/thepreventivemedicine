@@ -1,0 +1,130 @@
+{% load staticfiles%}
+ 
+<!-- Menu -->
+
+<div class="menu trans_500">
+    <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+        <div class="menu_close_container"><div class="menu_close"></div></div>
+        
+        <form  class="menu_search_form" action="#">
+            
+            <input required type="text" class="menu_search_input" placeholder="Search">
+            
+            <button class="menu_search_button" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+
+        </form>
+
+        <ul>
+            <li class="menu_item"><a href="{% url 'home:home' %}">Home</a></li>
+            <li class="menu_item"><a href="{% url 'home:home' %}">Why</a></li>
+            <li class="menu_item"><a href="{% url 'home:home' %}">How</a></li>
+            <li class="menu_item"><a href="{% url 'home:home' %}">Where</a></li>
+            <li class="menu_item"><a href="{% url 'home:home' %}">How Much</a></li>
+            <li class="menu_item"><a href="{% url 'home:home' %}">Contact</a></li>
+
+        </ul>
+    </div>
+    
+</div>
+
+
+<!-- Home -->
+
+<div class="home">
+    {% if  active_page == 'home'%}
+        <div class="background_image" style="background-image:url('{%static bck_image %}');"></div>
+    {% else %}
+        {% if bck_image %}
+        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static bck_image %}" data-speed="0.8"></div>
+        {% else %}
+        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/cta_1.jpg' %}" data-speed="0.8"></div>
+        {% endif %}
+       
+        
+    {% endif%}
+    
+    <!-- Header -->
+
+    <header class="header" id="header">
+        <div>
+            <div class="header_top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="header_top_content d-flex flex-row align-items-center justify-content-start">
+                                <!-- <div class="logo"> -->
+                                    <a href="{% url 'home:home' %}"><span style="font-size: 20px; color:#3271c6"><b><i>www.thepreventivemedicine.com</i></b></span></a>	
+                                <!-- </div> -->
+                                <div class="header_top_extra d-flex flex-row 	align-items-center justify-content-start ml-auto">
+                                    <div class="header_top_nav">
+                                        <ul class="d-flex flex-row align-items-center justify-content-start">
+                                            <li><b>16400 Lark Avenue, Suite 100, Los Gatos, CA 95032</b></li>
+                                        </ul>
+                                    </div>
+                                    <div class="header_top_phone">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                        <span>650-400-9868</span>
+                                    </div>
+                                </div>
+                                <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header_nav" id="header_nav_pin">
+                <div class="header_nav_inner">
+                    <div class="header_nav_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="header_nav_content d-flex flex-row align-items-center justify-content-start">
+                                        <nav class="main_nav">
+                                            <ul class="d-flex flex-row align-items-center justify-content-start">
+                                                <li><a id="homemenu" href="{% url 'home:home' %}">Home</a></li>
+                                                <li><a id="homemenu" href="{% url 'home:home' %}">Home</a></li>
+                                                <li><a id="homemenu" href="{% url 'home:home' %}">Home</a></li>
+                                                <li><a id="homemenu" href="{% url 'home:home' %}">Home</a></li>
+                                                <li><a id="homemenu" href="{% url 'home:home' %}">Home</a></li>
+                                                
+                                            </ul>
+                                        </nav>
+                                        <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
+                                            <form method="GET" action=""
+                                            id="search_container_form" class="search_container_form">
+                                                <input type="text" name='search_word' class="search_container_input" placeholder="Search">
+                                                <button class="search_container_button" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>
+    </header>
+
+    {% if active_page == 'home' %}
+    <div class="home_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content">
+                        <!-- <div class="home_title">Sustainable Behavior Modification</div> -->
+                        <div class="home_text">Integrative medicine combines conventional western medicine with complementary and alternative therapies. </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   
+
+    {% endif %}
+    
+</div>
