@@ -325,7 +325,7 @@ section
 {
 	font-size: 36px;
 	font-weight: 600;
-	color: #404040;
+	/* color: #404040; */
 	line-height: 0.75;
 }
 .section_subtitle
@@ -883,6 +883,11 @@ section
 	font-size: 20px;
 	font-weight: 600;
 	color: #404040;
+}
+.info_title_par
+{
+	font-size: 20px;
+	
 }
 .info_text
 {
