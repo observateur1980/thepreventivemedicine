@@ -107,7 +107,7 @@ p a:hover::after
 }
 ::selection
 {
-	background: #32c69a;
+	background: #3271c6;
 	color: #FFFFFF;
 }
 p::selection
@@ -251,7 +251,7 @@ section
 {
 	width: 137px;
 	height: 54px;
-	background: #32c69a;
+	background: #3271c6;
 	overflow: hidden;
 }
 .button a
@@ -389,7 +389,7 @@ section
 {
 	position: relative;
 	font-size: 36px;
-	color: #32c69a;
+	color: #3271c6;
 	line-height: 0.75;
 	vertical-align: text-top;
 }
@@ -416,7 +416,7 @@ section
 }
 .header_top_nav ul li a:hover
 {
-	color: #32c69a;
+	color: #3271c6;
 }
 .header_top_phone
 {
@@ -425,7 +425,7 @@ section
 .header_top_phone i
 {
 	font-size: 22px;
-	color: #32c69a;
+	color: #3271c6;
 	vertical-align: middle;
 	transform: translateY(-1px);
 }
@@ -467,7 +467,7 @@ section
 .header_nav_container
 {
 	z-index: 1;
-	background: #32c69a;
+	background: #3271c6;
 }
 .header_nav_content
 {
@@ -839,7 +839,7 @@ section
 	line-height: 54px;
 	text-align: center;
 	color: #FFFFFF;
-	background: #32c69a;
+	background: #3271c6;
 	padding-left: 17px;
 	padding-right: 19px;
 }
@@ -993,7 +993,7 @@ section
 .tab:hover,
 .tab.active
 {
-	background: #32c69a;
+	background: #3271c6;
 }
 .tab:hover .tab_title,
 .tab:hover .tab_text,
@@ -1102,7 +1102,7 @@ section
 {
 	font-size: 14px;
 	font-weight: 500;
-	color: #d3d3d3;
+	color: white;
 	line-height: 2.14;
 	margin-top: 39px;
 }
@@ -1122,7 +1122,7 @@ section
 {
 	font-size: 12px;
 	font-style: italic;
-	color: rgba(255,255,255,0.48);
+	color: white;
 	margin-top: 54px;
 }
 .footer_contact
@@ -1199,7 +1199,7 @@ section
 {
 	width: 275px;
 	height: 54px;
-	background: #32c69a;
+	background: #3271c6;
 	border: none;
 	outline: none;
 	cursor: pointer;
@@ -1266,7 +1266,7 @@ section
 }
 .footer_nav ul li a:hover
 {
-	color: #32c69a;
+	color: #3271c6;
 }
 .footer_links
 {
@@ -1295,18 +1295,18 @@ section
 }
 .footer_links ul li a:hover
 {
-	color: #32c69a;
+	color: #3271c6;
 }
 .footer_phone span
 {
 	font-size: 14px;
 	font-weight: 600;
-	color: #32c69a;
+	color: #3271c6;
 }
 .footer_phone i
 {
 	display: inline-block;
 	vertical-align: middle;
 	font-size: 20px;
-	color: #32c69a;
+	color: #3271c6;
 }
