@@ -5,6 +5,151 @@
 <!-- Info Boxes -->
 
 <div class="info">
+    <div class="container">
+        <div class="row row-eq-height">
+
+            <!-- Info Box -->
+            <div class="col-lg-4 info_box_col">
+                <div class="info_box">
+                    <div class="info_image"><img src="{% static 'images/image1.jpg' %}" alt="" height="250" width="400"></div>
+                    <div class="info_content">
+                        <div class="info_title">Free Consultations</div>
+                        <div class="info_text">
+                            <ul style="list-style-type:disc;">
+                                <li>Look and learn from the root causes and core issues so as to prevent additional compulsive behaviors and addictions</li>
+                                <li>Courage to take the first step</li>
+                                <li>Learn to live by choice rather than by chance</li>
+                            </ul>
+                            
+                            
+                            </div>
+                        <!-- <div class="button info_button"><a href="#"><span>read more</span><span>read more</span></a></div> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Box -->
+            <div class="col-lg-4 info_box_col">
+                <div class="info_box">
+                    <div class="info_image"><img src="{% static 'images/image2.jpg' %}" alt="" height="250" width="400"></div>
+                    <div class="info_content">
+                        <div class="info_title">General Solutions</div>
+                        <div class="info_text">
+                            <ul style="list-style-type:disc;">
+                                <li>Tools to promptly deal with the dis Ease of feelings, thoughts, expectations, situations,challenging relationships</li>
+                                <li>Effective methods to navigate through career, relationships and stages of personal growth</li>
+                            </ul>
+                        </div>
+                        <!-- <div class="button info_button"><a href="#"><span>read more</span><span>read more</span></a></div> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Form -->
+            <div class="col-lg-4 info_box_col">
+                <div class="info_form_container">
+                    <div class="info_form_title">Make an Appointment</div>
+                    <form class="info_form" id="contact_form" name="contact_form" method="post">
+                        
+                            {% csrf_token %}
+                        <input type="text" class="info_input" placeholder="Name" required="required" name="form_name" id="form_name" >
+                        <input type="text" class="info_input" placeholder="Email" required="required" name="form_email" id="form_email" >
+                        <input type="text" class="info_input" placeholder="Phone No" name="form_phone" id="form_phone" >
+                        <input type="text" class="info_input" placeholder="Enter message" required="required" name="form_message" id="form_message" >
+                        <input name="form_botcheck" class="form-control" type="hidden" value=""/>
+                        
+                        <button  id="sndmsg" name="sndmsg" type="submit" class="info_form_button">make an appointment</button>
+                    </form>
+
+                     <!-- Contact Form Validation-->
+              <script>
+
+
+
+
+
+                    $(document).ready(function(){
+                        
+                        
+                           
+                           
+                       $("#sndmsg").click(function ()
+                       {
+                        if($('#contact_form').valid()!=true)
+                        {
+                          return
+                        }
+                        form_name=document.getElementById("form_name").value;
+                        form_email=document.getElementById("form_email").value;
+                        form_phone=document.getElementById("form_phone").value;
+                        form_message=document.getElementById("form_message").value;
+                        
+                        $('#sndmsg').text('Please wait').attr('disabled', true);
+                  
+                       
+                  
+                          $.ajax({
+                            
+                                    type: "POST",
+                                    url: "{% url 'home:make_appointment_home' %}",
+                                    data: {
+                                            
+                                              'csrfmiddlewaretoken': '{{ csrf_token }}',
+                                              'form_name':form_name,
+                                              'form_email':form_email,
+                                              'form_phone':form_phone,
+                                              'form_message':form_message,
+                                              
+                                            },
+                                    dataType: 'json',
+                  
+                                    success: function (data) {
+                                    if (data) {
+                                        
+                                        if (data['my_response']=='OK'){
+                                          document.getElementById("form_name").value='';
+                                          document.getElementById("form_email").value='';
+                                          document.getElementById("form_phone").value='';
+                                          document.getElementById("form_message").value='';
+                  
+                                          $('#sndmsg').text('MAKE AN APPOINTMENT').attr('disabled', false);
+                  
+                  
+                                        } else {
+                  
+                                            alert('Something went wrong!');
+                                        }
+                  
+                  
+                  
+                  
+                            }
+                  
+                            }
+                  
+                  
+                  
+                        });
+                          
+                       }
+                       );
+                       
+                       
+                       
+                        
+                       
+                       
+                          });
+                         </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Info Boxes -->
+
+<!-- <div class="info">
         <div class="container">
                 <div class="row">
                         <div class="col text-center">
@@ -16,49 +161,50 @@
     
     
     
-               <!-- Info Box -->
+               
                <div class="col-lg-4 info_box_col">
                     <div class="info_box">
                         <div class="info_image"><img src="{% static 'images/image1.jpg' %}" alt="" height="250" width="400"></div>
                         <div class="info_content">
-                            <div class="info_title_par">Subacute Phase of Personalized Treatment lorem ipsum lorem ipsum lorem ipsum lorem ipsum</div>
-                            <!-- <div class="info_text">Congratulations to all who get and stay sober in this challenging world!  We welcome all alumni to attend groups and events (as long as there is an extra chair) to continue learning, growing, and giving back to others.  Join in, volunteer, make a difference.  You are part of our tribe.
+                            <div class="info_title_par">Subacute Phase of Personalized Treatment:
+                                    <ul style="list-style-type:disc;">
+                                <li>Learn to deal with triggers and behaviors</li>
+                                <li>Medication Assisted Therapy</li>
+                                <li>Intense Individual Therapy</li>
+                                <li>Family Dynamics &amp; Family Counseling</li>
+                                
 
-                            </div> -->
+                            </ul>    
+                            </div>
+                           
                     
                         </div>
                     </div>
                 </div>
     
                 
-        <!-- Info Box -->
+        
     <div class="col-lg-4 info_box_col">
         <div class="info_box">
             <div class="info_image"><img src="{% static 'images/image2.jpg' %}" alt="" height="250" width="400"></div>
             <div class="info_content">
                 <div class="info_title_par">Tools to deal with the dis-ease of feelings, thoughts, expectations, situations and challenging
                         relationships</div>
-                <!-- <div class="info_text">This cutting edge treatment utilizes the best of what neuroscience recommends for resolving deeply embedded  reactivity.  You will experience pain-free, uplifting techniques designed to quickly and effectively rewrite core beliefs and unhook painful emotions from your past.  <br><br>   
-    
-                </div> -->
+                
         
             </div>
         </div>
     </div>		
         
     
-    <!-- Info Box -->
+    
     <div class="col-lg-4 info_box_col">
         <div class="info_box">
             <div class="info_image"><img src="{% static 'images/lifeskills.jpg' %}" alt="" height="250" width="400"></div>
             <div class="info_content">
                 <div class="info_title_par">Look at the root cause of disease and core issues so as to prevent chronic diseases and unhealthy
                         behaviors</div>
-                <!-- <div class="info_text">Life is demanding.  Getting sober can be challenging.  Staying sober is a skill!  We will teach you a variety of solution-focused, skill building techniques to help you navigate career, relationship and transitional life issues calmly and effectively.  12-Step option available.
-    <br>
-    <br>
-    
-                </div> -->
+                
         
             </div>
         </div>
@@ -73,15 +219,13 @@
                 <div class="row row-eq-height">
     
     
-    <!-- Info Box -->
+    
     <div class="col-lg-4 info_box_col">
             <div class="info_box">
                 <div class="info_image"><img src="{% static 'images/image4.jpg' %}" alt="" height="250" width="400"></div>
                 <div class="info_content">
                     <div class="info_title_par">Outcome Driven lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum</div>
-                    <!-- <div class="info_text">Our team draws from the most advanced methods available to treat root causes of substance abuse and mental health issues. Many clients arrive at our facility after years of unsuccessful therapy and addiction treatment and report an immediate sense that something unique and powerful is available.
-
-                    </div> -->
+                    
             
                 </div>
             </div>
@@ -89,34 +233,26 @@
                     
     
                     
-            <!-- Info Box -->
+        
     <div class="col-lg-4 info_box_col">
             <div class="info_box">
                 <div class="info_image"><img src="{% static 'images/cost.jpg' %}" alt="" height="250" width="400"></div>
                 <div class="info_content">
                     <div class="info_title_par">Maintenance Phase of Personalized Treatment lorem ipsum lorem ipsum lorem ipsum lorem ipsum</div>
-                    <!-- <div class="info_text">We accept insurance and private pay.  Fees and payment options depend on many factors.  We will work with you as much as possible to ensure you can get the help you need at a price you can afford.  Call to discuss which program and financial option works best for you.    <br>   
-    
-                    </div> -->
+                   
             
                 </div>
             </div>
         </div>		
             
     
-    <!-- Info Box -->
+    
     <div class="col-lg-4 info_box_col">
             <div class="info_box">
                 <div class="info_image"><img src="{% static 'images/image6.jpg' %}" alt="" height="250" width="400"></div>
                 <div class="info_content">
                     <div class="info_title_par">Solution based lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</div>
-                    <!-- <div class="info_text">One size does not fit all:
-                            We create unique, individualized treatment programs based on the patient’s specific needs. Our 24/7
-                            medically-supervised detoxification ensures our patients detox both comfortably and safely.
-    <br>
-      <br>
-    
-                    </div> -->
+                    
             
                 </div>
             </div>
@@ -126,7 +262,7 @@
                 </div>
             </div>
             
-    </div>
+    </div> -->
 
 <!-- CTA -->
 
@@ -182,6 +318,113 @@
 </div>
 
 
+<!-- FAQ & News -->
+
+<div class="stuff">
+		<div class="container">
+			<div class="row">
+
+				<!-- FAQ -->
+				<div class="col-lg-7">
+					<div class="faq">
+						<div class="faq_title">Faq & Billing</div>
+						<div class="faq_subtitle">read all about it</div>
+						<div class="elements_accordions">
+							<div class="accordions">
+
+								<div class="accordion_container">
+									<div class="accordion d-flex flex-row align-items-center active"><div>Payment Options:</div></div>
+									<div class="accordion_panel">
+										<div>
+											<p>We accept cash and all major credit cards.</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="accordion_container">
+									<div class="accordion d-flex flex-row align-items-center"><div>Minor Patients:</div></div>
+									<div class="accordion_panel">
+										<div>
+											<p>The adult / guardian accompanying minors are responsible for full payment of services rendered.</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="accordion_container">
+									<div class="accordion d-flex flex-row align-items-center"><div>Insurance Billing:</div></div>
+									<div class="accordion_panel">
+										<div>
+                                            <p>We will attempt to bill your insurance company. Please be mindful that not all insurance plans cover urgent care services and if so, you are responsible for the bill.</p>
+                                            <p>Co Payments are due at the time of service. Patients and guarantors are financially responsible for any services provided and not covered by your insurance plan.</p>
+                                            <p>It is your responsibility to know and understand your specific insurance plan and which benefits are covered.</p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Latest News -->
+				<div class="col-lg-5">
+					<div class="news">
+						<div class="news_title">Latest Articles</div>
+						<div class="news_subtitle">read all about it</div>
+						<div class="news_container">
+
+							<!-- Latest News Post -->
+							<div class="latest d-flex flex-row align-items-start justify-content-start">
+								<div><div class="latest_image"><img src="{% static 'images/latest_1.jpg' %}" alt=""></div></div>
+								<div class="latest_content">
+									<div class="latest_title"><a href="news.html">A simple blog post</a></div>
+									<div class="latest_info">
+										<ul class="d-flex flex-row align-items-start justify-content-start">
+											<li><a href="#">by Jane Smith</a></li>
+											<li><a href="#">April 25, 2018</a></li>
+										</ul>
+									</div>
+									<div class="latest_comments"><a href="#">2 Comments</a></div>
+								</div>
+							</div>
+
+							<!-- Latest News Post -->
+							<div class="latest d-flex flex-row align-items-start justify-content-start">
+								<div><div class="latest_image"><img src="{% static 'images/latest_2.jpg' %}" alt=""></div></div>
+								<div class="latest_content">
+									<div class="latest_title"><a href="news.html">A new way to see things in medicine</a></div>
+									<div class="latest_info">
+										<ul class="d-flex flex-row align-items-start justify-content-start">
+											<li><a href="#">by Jane Smith</a></li>
+											<li><a href="#">April 25, 2018</a></li>
+										</ul>
+									</div>
+									<div class="latest_comments"><a href="#">2 Comments</a></div>
+								</div>
+							</div>
+
+							<!-- Latest News Post -->
+							<div class="latest d-flex flex-row align-items-start justify-content-start">
+								<div><div class="latest_image"><img src="{% static 'images/latest_3.jpg' %}" alt=""></div></div>
+								<div class="latest_content">
+									<div class="latest_title"><a href="news.html">Why is Pharma industry so big?</a></div>
+									<div class="latest_info">
+										<ul class="d-flex flex-row align-items-start justify-content-start">
+											<li><a href="#">by Jane Smith</a></li>
+											<li><a href="#">April 25, 2018</a></li>
+										</ul>
+									</div>
+									<div class="latest_comments"><a href="#">2 Comments</a></div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
 
 
 

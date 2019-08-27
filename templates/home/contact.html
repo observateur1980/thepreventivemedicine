@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+
+<div class="contact">
+    <div class="container">
+        <div class="row">
+
+            <!-- Contact form -->
+            <div class="col-lg-8 contact_col">
+                <div class="contact_form">
+                    <div class="contact_title">Get in touch</div>
+                    <div class="contact_form_container">
+                        <form method="POST">
+                                {% csrf_token %}
+                                {{ form }}
+                            <button class="contact_button" id="contact_button" type="submit">send message</button>   
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- contact info -->
+            <div class="contact_info">
+                <div class="row">
+                    <div class="col-lg-3 offset-lg-1">
+                        <div class="contact_info_list">
+                            <div class="contact_info_title">Contact Info</div>
+                            <ul>
+                                <li><span>Address: </span>16400 Lark Avenue, Suite 350, Los Gatos, CA 95032</li>
+                                <li><span>Email: </span>losgatosrecoverycenter@gmail.com</li>
+                                <li><span>Phone: </span>408-384-9717</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="contact_info_list contact_info_list_2">
+                                <div class="contact_info_title">Call or email today for a complimentary consultation.</div>
+                                
+                                Let's discuss your situation.   We will look at options that fit your goals and budget and decide together your next best step. 
+<br>
+                                Monday - Friday: 9am - 6pm
+
+After hours and weekends:  by appointment.  Call and leave us a message or fill out the contact form on the left and we will get back to you within 24 hours.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Google Map -->
+
+
+    
+        
+                <img src="{% static 'images/mapurgentcare.png' %}" alt="" height="600" width="100%">
+        
+    
+
+
+
+    <script>
+            $('#contactmenu').css('text-decoration',  'underline')
+    </script>
+
+{% endblock %}
