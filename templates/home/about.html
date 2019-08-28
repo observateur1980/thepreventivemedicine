@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<br><br><br><br><br><br>
+<!-- About -->
+
+<div class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="section_title">Dr. Sepideh Moayed</div>
+                <!-- <div class="section_subtitle">too choose from</div> -->
+            </div>
+        </div>
+        <div class="row about_row row-eq-height">
+            <div class="col-lg-7">
+                <!-- <div class="logo">
+                    <a href="#">Dr. Sepideh Moayed</a>	
+                </div> -->
+                <div class="about_text_highlight">Dr. Sepideh Moayed is a physician, healer, educator, parent and a firm believer that the body and mind can best function when there are preservation and promotion of an individual “whole” self.</div>
+                <div class="about_text">
+                    <p>She believes that in addition to allopathic medicine, further integration and implementation of the mind-body complex is an absolute necessity.</p>
+                    <p>
+                        As a physician advocate, Dr. Moayed has witnessed that through education and prevention, we, as a culture, can dampen or delay the onset of many chronic diseases that all our society.
+                    </p>
+                    <p>
+                        As a parent, she has been on a personal quest to implement the latest research in child rearing of her teenagers. It is a fact that many unhealthy external triggers as well as cultural and societal “norms” are indefinitely impacting our children’s emotional, physical, mental health.  Since 2012, she has been on the frontiers of looking at the internet, gaming and social media overuse and the crossover between Impulse Control Disorders, compulsive behaviors, and a motivational syndromes. 
+                    </p>
+                    <p>She is convinced that until one develops a healing relationship with oneself, makes the decision to place health first and then takes proper action steps, one has very little defense against cultural, societal and technological adverse effects.</p>
+                    <p>
+                        Dr. Moayed has a highly individualized assessment and treatment protocol to help patients deal with the root causes of chronic diseases. She believes that achieving optimal health is an ongoing, dynamic and lifelong process, an anathema to the quick/instant fix approaches the 21st-century individuals are led to believe. Health revitalization takes a multifaceted approach and is most effective when an individual begins to participate in his / her own health and by so doing prevents progression of chronic and debilitating diseases. She helps her patients with inspiration, implementation and invigorating intervention to heal the body while tapping into the powers of neuroplasticity for the mind.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-5">
+                <div class="about_image"><img src="{% static 'images/SEPIDAH.jpg' %}"alt="" width="400" height="500"></div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+</div>
+
+<script>
+    $('#aboutmenu').css('text-decoration',  'underline')
+</script>
+
+{% endblock %}

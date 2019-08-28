@@ -30,6 +30,18 @@ class Services(TemplateView):
 		return context
 
 
+class About(TemplateView):
+	template_name = 'home/about.html'
+	
+	
+	def get_context_data(self, *args, **kwargs):
+		context = super(About, self).get_context_data(*args, **kwargs)	
+		context["bck_image"] = 'images/services.jpg'
+		context["active_page"] = 'about'
+		return context
+
+		
+
 class Contact(FormView):
 	template_name = 'home/contact.html'
 	form_class = ContactForm

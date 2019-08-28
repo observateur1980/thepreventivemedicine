@@ -220,11 +220,11 @@ section
 {
 	height: 130% !important;
 }
-.parallax-window
+/* .parallax-window
 {
     min-height: 400px;
     background: transparent;
-}
+} */
 .parallax_background
 {
 	position: absolute;
@@ -807,11 +807,11 @@ section
 5. Home
 *********************************/
 
-.home
+/* .home
 {
 	width: 100%;
 	height: 382px;
-}
+} */
 .home_container
 {
 	position: absolute;
