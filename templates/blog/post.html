@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<br><br><br><br><br><br>
+<!-- Blog -->
+
+<div class="news">
+    <div class="container">
+        <div class="row">
+            
+            <!-- News Posts -->
+            <div class="col-lg-8">
+                <div class="news_posts">
+                    
+                    <!-- News Post -->
+                    <div class="news_post">
+                        <div class="news_post_image"><img  alt="" src="{{ post.thumbnail.url }}" width="754" height="342"></div>
+                        <div class="news_post_content">
+                            <div class="news_post_date"><a href="#">{{ post.timestamp }}</a></div>
+                            <div class="news_post_title"><a href="{% url 'blog:post-detail' id=post.pk %}">{{ post.title }}</a></div>
+                            
+                            <div class="news_post_info">
+                                <ul class="d-flex flex-row align-items-center justify-content-start">
+                                    <li><a href="#">by {{ post.author.user.username }}</a></li>
+                                    {% for cat in post.categories.all %}
+                                    <li><a href="#">{{ cat }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="news_post_text">
+                                <p>{{ post.overview }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+                    
+
+
+                </div>
+
+         
+            </div>
+
+            {% include 'blog/sidebar.html' with most_recent=most_recent category_count=category_count %}
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $('#blogmenu').css('text-decoration',  'underline')
+</script>
+
+{% endblock %}

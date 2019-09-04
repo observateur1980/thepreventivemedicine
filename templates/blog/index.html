@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<br><br><br><br><br><br>
+<!-- Blog -->
+
+<div class="news">
+    <div class="container">
+        <div class="row">
+            
+            <!-- News Posts -->
+            <div class="col-lg-8">
+                <div class="news_posts">
+                    {% for post in queryset %}
+                    <!-- News Post -->
+                    <div class="news_post">
+                        <div class="news_post_image"><img  alt="" src="{{ post.thumbnail.url }}" width="754" height="342"></div>
+                        <div class="news_post_content">
+                            <div class="news_post_date"><a href="#">{{ post.timestamp }}</a></div>
+                            <div class="news_post_title"><a href="{% url 'blog:post-detail' id=post.pk %}">{{ post.title }}</a></div>
+                            
+                            <div class="news_post_info">
+                                <ul class="d-flex flex-row align-items-center justify-content-start">
+                                    <li><a href="#">by {{ post.author.user.username }}</a></li>
+                                    
+                                    {% for cat in post.categories.all %}
+                                    <li><a href="#">{{ cat }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="news_post_text">
+                                <p>{{ post.overview }}</p>
+                            </div>
+                            <div class="button news_post_button"><a href="{% url 'blog:post-detail' id=post.pk %}"><span>read more</span><span>read more</span></a></div>
+                        </div>
+                    </div>
+                    {% endfor%}
+                   
+                    <!-- <div class="pagination">
+                        <ul class="d-flex flex-row align-items-center justify-content-start">
+                            <li class="active"><a href="#">01.</a></li>
+                            <li><a href="#">02.</a></li>
+                            <li><a href="#">03.</a></li>
+                        </ul>
+                    </div> -->
+
+
+                </div>
+
+                <!-- Pagination -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-template d-flex justify-content-center">
+                  {% if queryset.has_previous %}                
+                  <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                  {% endif %}
+                  <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.number }}" class="page-link active">{{ queryset.number }}</a></li>
+                  {% if queryset.has_next %}
+                  <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.next_page_number }}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+  
+              {% if is_paginated %}
+              
+              <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-template d-flex justify-content-center">
+                  {% if page_obj.has_previous %}                
+                  <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                  {% endif %}
+                  <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.number }}" class="page-link active">{{ page_obj.number }}</a></li>
+                  {% if page_obj.has_next %}
+                  <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.next_page_number }}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+              
+              {% endif %}
+            </div>
+
+            {% include 'blog/sidebar.html' with most_recent=most_recent category_count=category_count %}
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $('#blogmenu').css('text-decoration',  'underline')
+</script>
+
+{% endblock %}

@@ -1,0 +1,147 @@
+
+
+<!-- Sidebar -->
+<div class="col-lg-4">
+    <div class="news_sidebar">
+
+        <!-- Search -->
+        <div class="sidebar_search">
+            <form action="#" id="sidebar_search" class="sidebar_search">
+                <input type="text" class="sidebar_search_input" placeholder="Search" required="required">
+                <button class="sidebar_search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+
+        <!-- Latest News -->
+        <div class="sidebar_latest">
+            <div class="sidebar_title">Latest Articles</div>
+            <div class="sidebar_latest_container">
+
+                <!-- Latest News Post -->
+                {% for post in most_recent %}
+                <div class="latest d-flex flex-row align-items-start justify-content-start">
+                    <div><div class="latest_image"><img 
+                        src="{{ post.thumbnail.url }}"  alt="" width="73" height="73"></div></div>
+                    <div class="latest_content">
+                        <div class="latest_title"><a href="news.html">{{ post.title }}</a></div>
+                        <div class="latest_info">
+                            <ul class="d-flex flex-row align-items-start justify-content-start">
+                                <li><a href="#">by {{ post.author.user.username }}</a></li>
+                                <li><a href="#">{{ post.timestamp |date }}</a></li>
+                            </ul>
+                        </div>
+                        <div class="latest_comments"><i class="fa fa-eye" ></i> {{ post.view_count }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="sidebar_categories">
+            <div class="sidebar_title">Categories</div>
+            <div class="categories">
+                <ul>
+                    {% for cat in category_count %}
+                    <li><a href="#"><div class="d-flex flex-row align-items-center justify-content-start">
+                        <div>{{ cat.categories__title }}</div>
+                        <div class="ml-auto">{{ cat.categories__title__count }}</div>
+                    </div></a></li>
+                    {% endfor %}
+                   
+                </ul>
+            </div>
+        </div>
+
+        <!-- Appointment -->
+        <div class="info_form_container">
+            <div class="info_form_title">Make an Appointment</div>
+            <form class="info_form" id="contact_form" name="contact_form" method="post">
+            
+                {% csrf_token %}
+            <input type="text" class="info_input" placeholder="Name" required="required" name="form_name" id="form_name" >
+            <input type="text" class="info_input" placeholder="Email" required="required" name="form_email" id="form_email" >
+            <input type="text" class="info_input" placeholder="Phone No" name="form_phone" id="form_phone" >
+            <input type="text" class="info_input" placeholder="Enter message" required="required" name="form_message" id="form_message" >
+            <input name="form_botcheck" class="form-control" type="hidden" value=""/>
+            
+            <button  id="sndmsg" name="sndmsg" type="submit" class="info_form_button">make an appointment</button>
+        </form>
+
+        <!-- Contact Form Validation-->
+  <script>
+    $(document).ready(function(){
+           
+       $("#sndmsg").click(function ()
+       {
+        if($('#contact_form').valid()!=true)
+        {
+          return
+        }
+        form_name=document.getElementById("form_name").value;
+        form_email=document.getElementById("form_email").value;
+        form_phone=document.getElementById("form_phone").value;
+        form_message=document.getElementById("form_message").value;
+        
+        $('#sndmsg').text('Please wait').attr('disabled', true);
+  
+       
+  
+          $.ajax({
+            
+                    type: "POST",
+                    url: "{% url 'home:make_appointment_home' %}",
+                    data: {
+                            
+                              'csrfmiddlewaretoken': '{{ csrf_token }}',
+                              'form_name':form_name,
+                              'form_email':form_email,
+                              'form_phone':form_phone,
+                              'form_message':form_message,
+                              
+                            },
+                    dataType: 'json',
+  
+                    success: function (data) {
+                    if (data) {
+                        
+                        if (data['my_response']=='OK'){
+                          document.getElementById("form_name").value='';
+                          document.getElementById("form_email").value='';
+                          document.getElementById("form_phone").value='';
+                          document.getElementById("form_message").value='';
+  
+                          $('#sndmsg').text('MAKE AN APPOINTMENT').attr('disabled', false);
+  
+  
+                        } else {
+  
+                            alert('Something went wrong!');
+                        }
+  
+  
+  
+  
+            }
+  
+            }
+  
+  
+  
+        });
+          
+       }
+       );
+       
+       
+       
+        
+       
+       
+          });
+</script>
+        </div>
+        
+    </div>
+</div>

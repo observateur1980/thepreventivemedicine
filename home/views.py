@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
-from . models import Article
 from thepreventivemedicine.settings import EMAIL_HOST_USER
 from django.http import JsonResponse
 from django.core.mail import send_mail
@@ -10,13 +9,13 @@ from . forms import ContactForm
 
 class Home(TemplateView):
 	template_name = 'home/home.html'
-	article = Article.objects.first_articles()
+	
 	
 	def get_context_data(self, *args, **kwargs):
 		context = super(Home, self).get_context_data(*args, **kwargs)		
 		context["bck_image"] = 'images/index_hero.jpg'
 		context["active_page"] = 'home'
-		context["article"] = self.article
+		
 		return context
 
 class Services(TemplateView):
@@ -25,7 +24,6 @@ class Services(TemplateView):
 	
 	def get_context_data(self, *args, **kwargs):
 		context = super(Services, self).get_context_data(*args, **kwargs)		
-		context["bck_image"] = 'images/services.jpg'
 		context["active_page"] = 'services'
 		return context
 
@@ -36,11 +34,20 @@ class About(TemplateView):
 	
 	def get_context_data(self, *args, **kwargs):
 		context = super(About, self).get_context_data(*args, **kwargs)	
-		context["bck_image"] = 'images/services.jpg'
 		context["active_page"] = 'about'
 		return context
 
-		
+class Blog(TemplateView):
+	template_name = 'home/blog.html'
+	
+	
+	def get_context_data(self, *args, **kwargs):
+		context = super(Blog, self).get_context_data(*args, **kwargs)	
+		context["active_page"] = 'blog'
+		return context	
+
+
+
 
 class Contact(FormView):
 	template_name = 'home/contact.html'
@@ -49,7 +56,6 @@ class Contact(FormView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(Contact, self).get_context_data(*args, **kwargs)		
-		context["bck_image"] = 'images/contact.jpg'
 		context["active_page"] = 'contact'
 		return context
 	
