@@ -21,9 +21,9 @@
                 {% for post in most_recent %}
                 <div class="latest d-flex flex-row align-items-start justify-content-start">
                     <div><div class="latest_image"><img 
-                        src="{{ post.thumbnail.url }}"  alt="" width="73" height="73"></div></div>
+                        src="{{ post.thumbnail.url }}"  alt="" width="73" height="70"></div></div>
                     <div class="latest_content">
-                        <div class="latest_title"><a href="news.html">{{ post.title }}</a></div>
+                        <div class="latest_title"><a href="{% url 'blog:post-detail' id=post.pk %}">{{ post.title }}</a></div>
                         <div class="latest_info">
                             <ul class="d-flex flex-row align-items-start justify-content-start">
                                 <li><a href="#">by {{ post.author.user.username }}</a></li>
@@ -44,7 +44,7 @@
             <div class="categories">
                 <ul>
                     {% for cat in category_count %}
-                    <li><a href="#"><div class="d-flex flex-row align-items-center justify-content-start">
+                    <li><a  href="{% url 'blog:by_cat_post_list' cat_id=cat.categories__id  %}"><div class="d-flex flex-row align-items-center justify-content-start">
                         <div>{{ cat.categories__title }}</div>
                         <div class="ml-auto">{{ cat.categories__title__count }}</div>
                     </div></a></li>

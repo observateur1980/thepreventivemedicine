@@ -32,18 +32,14 @@
                             <div class="news_post_text">
                                 <p>{{ post.overview }}</p>
                             </div>
+                            
                             <div class="button news_post_button"><a href="{% url 'blog:post-detail' id=post.pk %}"><span>read more</span><span>read more</span></a></div>
+                            
                         </div>
                     </div>
                     {% endfor%}
                    
-                    <!-- <div class="pagination">
-                        <ul class="d-flex flex-row align-items-center justify-content-start">
-                            <li class="active"><a href="#">01.</a></li>
-                            <li><a href="#">02.</a></li>
-                            <li><a href="#">03.</a></li>
-                        </ul>
-                    </div> -->
+                    
 
 
                 </div>

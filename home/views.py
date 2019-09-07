@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.views.generic.edit import FormView
 from . forms import ContactForm
+from blog.models import Post
 # Create your views here.
 
 class Home(TemplateView):
@@ -12,9 +13,12 @@ class Home(TemplateView):
 	
 	
 	def get_context_data(self, *args, **kwargs):
+		most_recent = Post.objects.order_by('-timestamp')[:3]
+
 		context = super(Home, self).get_context_data(*args, **kwargs)		
 		context["bck_image"] = 'images/index_hero.jpg'
 		context["active_page"] = 'home'
+		context["most_recent"] = most_recent
 		
 		return context
 

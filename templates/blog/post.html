@@ -29,8 +29,13 @@
                                 </ul>
                             </div>
                             <div class="news_post_text">
-                                <p>{{ post.overview }}</p>
+                                <p>{{ post.content | safe }}</p>
                             </div>
+
+                            <!-- <div class="news_post_date">
+                                <a href="#">Back</a>
+                            </div> -->
+
                         </div>
                     </div>
                     

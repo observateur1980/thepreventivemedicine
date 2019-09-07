@@ -147,122 +147,7 @@
     </div>
 </div>
 
-<!-- Info Boxes -->
 
-<!-- <div class="info">
-        <div class="container">
-                <div class="row">
-                        <div class="col text-center">
-                            <div class="section_title">Integrative Preventive Medicine</div>
-                            <div class="section_subtitle"></div>
-                        </div>
-                    </div><br><br>
-            <div class="row row-eq-height">
-    
-    
-    
-               
-               <div class="col-lg-4 info_box_col">
-                    <div class="info_box">
-                        <div class="info_image"><img src="{% static 'images/image1.jpg' %}" alt="" height="250" width="400"></div>
-                        <div class="info_content">
-                            <div class="info_title_par">Subacute Phase of Personalized Treatment:
-                                    <ul style="list-style-type:disc;">
-                                <li>Learn to deal with triggers and behaviors</li>
-                                <li>Medication Assisted Therapy</li>
-                                <li>Intense Individual Therapy</li>
-                                <li>Family Dynamics &amp; Family Counseling</li>
-                                
-
-                            </ul>    
-                            </div>
-                           
-                    
-                        </div>
-                    </div>
-                </div>
-    
-                
-        
-    <div class="col-lg-4 info_box_col">
-        <div class="info_box">
-            <div class="info_image"><img src="{% static 'images/image2.jpg' %}" alt="" height="250" width="400"></div>
-            <div class="info_content">
-                <div class="info_title_par">Tools to deal with the dis-ease of feelings, thoughts, expectations, situations and challenging
-                        relationships</div>
-                
-        
-            </div>
-        </div>
-    </div>		
-        
-    
-    
-    <div class="col-lg-4 info_box_col">
-        <div class="info_box">
-            <div class="info_image"><img src="{% static 'images/lifeskills.jpg' %}" alt="" height="250" width="400"></div>
-            <div class="info_content">
-                <div class="info_title_par">Look at the root cause of disease and core issues so as to prevent chronic diseases and unhealthy
-                        behaviors</div>
-                
-        
-            </div>
-        </div>
-    </div>
-    
-    
-    
-            </div>
-        </div>
-    <br><br>
-        <div class="container">
-                <div class="row row-eq-height">
-    
-    
-    
-    <div class="col-lg-4 info_box_col">
-            <div class="info_box">
-                <div class="info_image"><img src="{% static 'images/image4.jpg' %}" alt="" height="250" width="400"></div>
-                <div class="info_content">
-                    <div class="info_title_par">Outcome Driven lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum</div>
-                    
-            
-                </div>
-            </div>
-        </div>
-                    
-    
-                    
-        
-    <div class="col-lg-4 info_box_col">
-            <div class="info_box">
-                <div class="info_image"><img src="{% static 'images/cost.jpg' %}" alt="" height="250" width="400"></div>
-                <div class="info_content">
-                    <div class="info_title_par">Maintenance Phase of Personalized Treatment lorem ipsum lorem ipsum lorem ipsum lorem ipsum</div>
-                   
-            
-                </div>
-            </div>
-        </div>		
-            
-    
-    
-    <div class="col-lg-4 info_box_col">
-            <div class="info_box">
-                <div class="info_image"><img src="{% static 'images/image6.jpg' %}" alt="" height="250" width="400"></div>
-                <div class="info_content">
-                    <div class="info_title_par">Solution based lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</div>
-                    
-            
-                </div>
-            </div>
-        </div>
-    
-        
-                </div>
-            </div>
-            
-    </div> -->
 
 <!-- CTA -->
 
@@ -373,23 +258,24 @@
 						<div class="news_subtitle">read all about it</div>
 						<div class="news_container">
 
-							<!-- Latest News Post -->
+                            <!-- Latest News Post -->
+                            {% for post in most_recent %}
 							<div class="latest d-flex flex-row align-items-start justify-content-start">
-								<div><div class="latest_image"><img src="{% static 'images/latest_1.jpg' %}" alt=""></div></div>
+								<div><div class="latest_image"><img src="{{ post.thumbnail.url }}" alt="" width="73" height="70"></div></div>
 								<div class="latest_content">
-									<div class="latest_title"><a href="news.html">A simple blog post</a></div>
+									<div class="latest_title"><a href="{% url 'blog:post-detail' id=post.pk %}">{{ post.title }}</a></div>
 									<div class="latest_info">
 										<ul class="d-flex flex-row align-items-start justify-content-start">
-											<li><a href="#">by Jane Smith</a></li>
-											<li><a href="#">April 25, 2018</a></li>
+											<li><a href="#">by {{ post.author.user.username }}</a></li>
+											<li><a href="#">{{ post.timestamp |date }}</a></li>
 										</ul>
 									</div>
-									<div class="latest_comments"><a href="#">2 Comments</a></div>
+									<div class="latest_comments"><a href="#"><i class="fa fa-eye" ></i> {{ post.view_count }}</a></div>
 								</div>
 							</div>
-
+                            {%endfor%}
 							<!-- Latest News Post -->
-							<div class="latest d-flex flex-row align-items-start justify-content-start">
+							<!-- <div class="latest d-flex flex-row align-items-start justify-content-start">
 								<div><div class="latest_image"><img src="{% static 'images/latest_2.jpg' %}" alt=""></div></div>
 								<div class="latest_content">
 									<div class="latest_title"><a href="news.html">A new way to see things in medicine</a></div>
@@ -401,10 +287,10 @@
 									</div>
 									<div class="latest_comments"><a href="#">2 Comments</a></div>
 								</div>
-							</div>
+							</div> -->
 
 							<!-- Latest News Post -->
-							<div class="latest d-flex flex-row align-items-start justify-content-start">
+							<!-- <div class="latest d-flex flex-row align-items-start justify-content-start">
 								<div><div class="latest_image"><img src="{% static 'images/latest_3.jpg' %}" alt=""></div></div>
 								<div class="latest_content">
 									<div class="latest_title"><a href="news.html">Why is Pharma industry so big?</a></div>
@@ -416,7 +302,7 @@
 									</div>
 									<div class="latest_comments"><a href="#">2 Comments</a></div>
 								</div>
-							</div>
+							</div> -->
 
 						</div>
 					</div>
